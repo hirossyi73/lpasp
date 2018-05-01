@@ -1,8 +1,9 @@
 // 設定値 --------------------------------------------------
 // URLに付加するクエリ文字列と、analyticsのkeyの一覧
-if (!("analytics_array" in window)) {
-    analytics_array = {};
-}
+// ※googleアナリティクスを流入元で分けないのでコメントアウト
+//if (!("analytics_array" in window)) {
+//    analytics_array = {};
+//}
 
 // 標準で使用するanalyticsのkey
 if (!("analytics_default_key" in window)) {
@@ -30,9 +31,9 @@ function ready_func() {
     console.log('target.value:' + target.value);
 }
 if (window.addEventListener) {
-    window.addEventListener('load', ready_func);
+    window.addEventListener('DOMContentLoaded', ready_func);
 } else if (window.attachEvent) {
-    window.attachEvent('onload', ready_func);
+    window.attachEvent('onreadystatechange', ready_func);
 }
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
@@ -47,14 +48,14 @@ function getParameterByName(name, url) {
 // 指定のanalyticsをクエリ文字列から判断
 var analytics = analytics_default_key;
 var query_value = getParameterByName(query_key);
-for (var key in analytics_array) {
-    if (key == query_value && analytics_array[key].length > 0) {
-        analytics = analytics_array[key];
-        break;
-    }
-}
-
-console.log('analytics:' + analytics);
+// ※googleアナリティクスを流入元で分けないのでコメントアウト
+//for (var key in analytics_array) {
+//    if (key == query_value && analytics_array[key].length > 0) {
+//        analytics = analytics_array[key];
+//        break;
+//    }
+//}
+//console.log('analytics:' + analytics);
 console.log('query_value:' + query_value);
 
 // googleアナリティクス読み込み
